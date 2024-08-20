@@ -1,0 +1,15 @@
+{
+  "name": "ada01_buscadorarticuloswikipedia",
+  "version": "1.0.0",
+  "description": "Desarrolla en PHP/JavaScript un buscador personalizado de artículos publicados en la Wikipedia. La aplicación debe permitir al usuario escribir un texto y listar los resultados de la búsqueda con enlaces a las páginas de los artículos. El usuario debe poder cambiar el orden de los resultados por relevancia, fecha y tamaño de la página. No debes utilizar componentes ni bibliotecas de terceros",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "css": "npx tailwindcss -i ./css/config.css -o ./css/app.css --watch"
+  },
+  "author": "Omar Fernando Solis Carvajal",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^3.4.10"
+  }
+}
