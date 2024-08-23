@@ -3,6 +3,7 @@ import {
   selectFilter,
   results,
   resultsHeading,
+  selectIdioms
 } from "./selectores.js";
 
 const getData = (e) => {
@@ -23,6 +24,7 @@ const callAPI = async () => {
   const data = new FormData();
   data.append("srsearch", inputSearch.value);
   data.append("srsort", selectFilter.value);
+  data.append("idiom", selectIdioms.value);
   const url = "./API/search.php";
   try {
     spinner();
@@ -33,8 +35,11 @@ const callAPI = async () => {
     const result = await response.json();
 
     let articles = result.query.search;
-    if (selectFilter.value === "size") {
+    if (selectFilter.value === "size_asc") {
       articles = sortBySize(articles, false); // De mayor a menor tamaño
+    }
+    if (selectFilter.value === "size_desc") {
+      articles = sortBySize(articles, true); // De menor a mayor tamaño
     }
     printData(articles);
   } catch (error) {
@@ -58,7 +63,7 @@ const printData = (articles) => {
   limpiarHTML();
   articles.forEach((article) => {
     const { title, snippet, timestamp } = article;
-    const url = `https://en.wikipedia.org/wiki/${encodeURIComponent(title)}`;
+    const url = `https://es.wikipedia.org/wiki/${encodeURIComponent(title)}`;
 
     const articleElement = document.createElement("article");
     articleElement.classList.add("p-4", "rounded-md", "shadow-sm", "bg-white");
